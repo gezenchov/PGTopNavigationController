@@ -9,10 +9,12 @@
 #import "ContainerViewController.h"
 #import "NavigationViewController.h"
 #import "NavigationItemViewController.h"
+#import "ContentViewController.h"
 
-@interface ContainerViewController ()
+@interface ContainerViewController () <NavigationViewController>
 
 @property (nonatomic, strong) NavigationViewController *navigationController;
+@property (nonatomic, strong) ContentViewController *contentViewController;
 
 @end
 
@@ -22,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.navigationController = [NavigationViewController new];
+    self.navigationController.delegate = self;
     
     NavigationItemViewController *item0 = [NavigationItemViewController new];
     item0.titleText = @"NEWS";
@@ -39,6 +42,16 @@
     self.navigationController.navigationItems = [NSArray arrayWithObjects:item0, item1, item2, nil];
     
     [self.view addSubview:self.navigationController.view];
+    
+    self.contentViewController = [ContentViewController new];
+    
+    self.contentViewController.view.frame = CGRectMake(0, self.view.frame.size.height - self.contentViewController.view.frame.size.height, self.contentViewController.view.frame.size.width, self.contentViewController.view.frame.size.height);
+    [self.view addSubview:self.contentViewController.view];
+}
+
+- (void)didSelectedItemAtIndex:(NSUInteger)index
+{
+    [self.contentViewController selectPageAtIndex:index];
 }
 
 @end

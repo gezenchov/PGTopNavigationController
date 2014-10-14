@@ -33,7 +33,7 @@
         
         navItem.delegate = self;
         navItem.button.tag = i;
-        navItem.view.frame = CGRectMake(i * [self itemsWidth] + 5, 30, [self itemsWidth] - 10, self.view.frame.size.height - 30);
+        navItem.view.frame = CGRectMake(i * [self itemsWidth] + 5, 30, [self itemsWidth] - 10, 60);
         [self.navigationScrollView addSubview:navItem.view];
         self.navigationScrollView.contentSize = CGSizeMake(i * [self itemsWidth] + 5 + [self itemsWidth] - 10,  self.view.frame.size.height - 30);
     }
@@ -52,6 +52,8 @@
     NavigationItemViewController *navItem = self.navigationItems[index];
     [self.navigationScrollView scrollRectToVisible:navItem.view.frame animated:YES];
     self.view.backgroundColor = navItem.overlayColor;
+    
+    [self.delegate didSelectedItemAtIndex:index];
 }
 
 - (CGFloat)itemsWidth
