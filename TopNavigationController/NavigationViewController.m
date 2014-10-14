@@ -9,8 +9,9 @@
 #import "NavigationViewController.h"
 #import "NavigationItemViewController.h"
 
-@interface NavigationViewController ()
+@interface NavigationViewController () <NavigationItem>
 
+@property (nonatomic, weak) IBOutlet UIScrollView *navigationScrollView;
 
 @end
 
@@ -22,14 +23,35 @@
     for (NSUInteger i = 0 ; i < self.navigationItems.count; i++) {
         NavigationItemViewController *navItem = self.navigationItems[i];
         
-        navItem.isFocused = (i == 0);
+        if (i == 0) {
+            navItem.isFocused = YES;
+            [self didSelectedItemAtIndex:i];
+        }
+        else {
+            navItem.isFocused = NO;
+        }
+        
+        navItem.delegate = self;
+        navItem.button.tag = i;
         navItem.view.frame = CGRectMake(i * [self itemsWidth] + 5, 30, [self itemsWidth] - 10, self.view.frame.size.height - 30);
-        [self.view addSubview:navItem.view];
+        [self.navigationScrollView addSubview:navItem.view];
+        self.navigationScrollView.contentSize = CGSizeMake(i * [self itemsWidth] + 5 + [self itemsWidth] - 10,  self.view.frame.size.height - 30);
     }
+    
+    self.navigationScrollView.contentOffset = CGPointMake(-50, 0);
+    
+    self.navigationScrollView.contentInset = UIEdgeInsetsMake(0, 50, 0, 50);
     
     ((NavigationItemViewController*)self.navigationItems[0]).isFocused = YES;
 
     // Do any additional setup after loading the view.
+}
+
+- (void)didSelectedItemAtIndex:(NSUInteger)index
+{
+    NavigationItemViewController *navItem = self.navigationItems[index];
+    [self.navigationScrollView scrollRectToVisible:navItem.view.frame animated:YES];
+    self.view.backgroundColor = navItem.overlayColor;
 }
 
 - (CGFloat)itemsWidth

@@ -29,11 +29,16 @@
     _isFocused = isFocused;
     
     if (isFocused) {
-        self.view.backgroundColor = [UIColor greenColor];
+        self.view.backgroundColor = self.solidColor;
     }
     else {
-        self.view.backgroundColor = [UIColor lightGrayColor];
+        self.view.backgroundColor = self.overlayColor;
     }
+}
+
+- (IBAction)itemPressed:(id)sender
+{
+    [self.delegate didSelectedItemAtIndex:((UIButton*)sender).tag];
 }
 
 @end
