@@ -11,7 +11,7 @@
 #import "NavigationItemViewController.h"
 #import "ContentViewController.h"
 
-@interface ContainerViewController () <NavigationViewController>
+@interface ContainerViewController () <NavigationViewController, ContentViewController>
 
 @property (nonatomic, strong) NavigationViewController *navigationController;
 @property (nonatomic, strong) ContentViewController *contentViewController;
@@ -28,12 +28,12 @@
     
     NavigationItemViewController *item0 = [NavigationItemViewController new];
     item0.titleText = @"NEWS";
-    item0.overlayColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:0.5f];
-    item0.solidColor = [UIColor colorWithRed:1 green:0 blue:0 alpha:1];
+    item0.overlayColor = [UIColor colorWithRed:0 green:204.0f/255.0f blue:102.0f/255.0f alpha:0.5f];
+    item0.solidColor = [UIColor colorWithRed:0 green:204.0f/255.0f blue:102.0f/255.0f alpha:1];
     NavigationItemViewController *item1 = [NavigationItemViewController new];
     item1.titleText = @"EVENTS";
-    item1.overlayColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:0.5f];
-    item1.solidColor = [UIColor colorWithRed:0 green:1 blue:0 alpha:1];
+    item1.overlayColor = [UIColor colorWithRed:1 green:165.0f/255.0f blue:0 alpha:0.5f];
+    item1.solidColor = [UIColor colorWithRed:1 green:165.0f/255.0f blue:0 alpha:1];
     NavigationItemViewController *item2 = [NavigationItemViewController new];
     item2.titleText = @"ENTERTAINMENT";
     item2.overlayColor = [UIColor colorWithRed:0 green:0 blue:1 alpha:0.5f];
@@ -44,6 +44,7 @@
     [self.view addSubview:self.navigationController.view];
     
     self.contentViewController = [ContentViewController new];
+    self.contentViewController.delegate = self;
     
     self.contentViewController.view.frame = CGRectMake(0, self.view.frame.size.height - self.contentViewController.view.frame.size.height, self.contentViewController.view.frame.size.width, self.contentViewController.view.frame.size.height);
     [self.view addSubview:self.contentViewController.view];
@@ -52,6 +53,11 @@
 - (void)didSelectedItemAtIndex:(NSUInteger)index
 {
     [self.contentViewController selectPageAtIndex:index];
+}
+
+- (void)didSelectedPageAtIndex:(NSUInteger)index
+{
+    [self.navigationController selectItemAtIndex:index];
 }
 
 @end

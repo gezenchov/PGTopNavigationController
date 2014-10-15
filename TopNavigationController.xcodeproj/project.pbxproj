@@ -12,8 +12,6 @@
 		DE2F998919EDC3CD009A085D /* PageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F998719EDC3CD009A085D /* PageViewController.m */; };
 		DE2F998A19EDC3CD009A085D /* PageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2F998819EDC3CD009A085D /* PageViewController.xib */; };
 		DE2F998E19EDCF58009A085D /* ContentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F998C19EDCF58009A085D /* ContentPageViewController.m */; };
-		DE2F999319EDD4B1009A085D /* PageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2F999119EDD4B1009A085D /* PageTableViewController.m */; };
-		DE2F999419EDD4B1009A085D /* PageTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DE2F999219EDD4B1009A085D /* PageTableViewController.xib */; };
 		DEEFDF0919D32E2400719D86 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEFDF0819D32E2400719D86 /* main.m */; };
 		DEEFDF0C19D32E2400719D86 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEFDF0B19D32E2400719D86 /* AppDelegate.m */; };
 		DEEFDF0F19D32E2400719D86 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DEEFDF0E19D32E2400719D86 /* ViewController.m */; };
@@ -48,9 +46,6 @@
 		DE2F998819EDC3CD009A085D /* PageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageViewController.xib; sourceTree = "<group>"; };
 		DE2F998B19EDCF58009A085D /* ContentPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentPageViewController.h; sourceTree = "<group>"; };
 		DE2F998C19EDCF58009A085D /* ContentPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentPageViewController.m; sourceTree = "<group>"; };
-		DE2F999019EDD4B1009A085D /* PageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageTableViewController.h; sourceTree = "<group>"; };
-		DE2F999119EDD4B1009A085D /* PageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageTableViewController.m; sourceTree = "<group>"; };
-		DE2F999219EDD4B1009A085D /* PageTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageTableViewController.xib; sourceTree = "<group>"; };
 		DEEFDF0319D32E2400719D86 /* TopNavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TopNavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEEFDF0719D32E2400719D86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DEEFDF0819D32E2400719D86 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -161,7 +156,6 @@
 				DEEFDF2C19D32FAC00719D86 /* ContainerView.xib */,
 				DE2F997E19EDBE70009A085D /* ContentViewController.xib */,
 				DE2F998819EDC3CD009A085D /* PageViewController.xib */,
-				DE2F999219EDD4B1009A085D /* PageTableViewController.xib */,
 				DEEFDF2A19D32F9700719D86 /* NavigationView.xib */,
 				DEEFDF3719D3350D00719D86 /* NavigationItemView.xib */,
 			);
@@ -177,8 +171,6 @@
 				DE2F997D19EDBE70009A085D /* ContentViewController.m */,
 				DE2F998619EDC3CD009A085D /* PageViewController.h */,
 				DE2F998719EDC3CD009A085D /* PageViewController.m */,
-				DE2F999019EDD4B1009A085D /* PageTableViewController.h */,
-				DE2F999119EDD4B1009A085D /* PageTableViewController.m */,
 				DEEFDF3219D3341B00719D86 /* NavigationViewController.h */,
 				DEEFDF3319D3341B00719D86 /* NavigationViewController.m */,
 				DEEFDF3519D3350D00719D86 /* NavigationItemViewController.h */,
@@ -278,7 +270,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE2F999419EDD4B1009A085D /* PageTableViewController.xib in Resources */,
 				DEEFDF2D19D32FAC00719D86 /* ContainerView.xib in Resources */,
 				DEEFDF3919D3350D00719D86 /* NavigationItemView.xib in Resources */,
 				DE2F998019EDBE70009A085D /* ContentViewController.xib in Resources */,
@@ -313,7 +304,6 @@
 				DEEFDF3419D3341B00719D86 /* NavigationViewController.m in Sources */,
 				DEEFDF3119D3303F00719D86 /* ContainerViewController.m in Sources */,
 				DEEFDF0919D32E2400719D86 /* main.m in Sources */,
-				DE2F999319EDD4B1009A085D /* PageTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

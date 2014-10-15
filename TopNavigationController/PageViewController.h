@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PageViewController : UIViewController
+
+
+@interface PageViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property NSUInteger pageIndex;
 @property NSString *titleText;

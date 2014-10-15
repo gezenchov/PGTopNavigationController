@@ -8,8 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ContentViewController <NSObject>
+
+- (void)didSelectedPageAtIndex:(NSUInteger)index;
+
+@end
+
 @interface ContentViewController : UIViewController <UIPageViewControllerDataSource>
 
+@property (nonatomic) id<ContentViewController> delegate;
 @property (nonatomic, weak) IBOutlet UIScrollView *contentScrollView;
 
 - (void)selectPageAtIndex:(NSUInteger)index;

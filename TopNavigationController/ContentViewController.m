@@ -10,7 +10,7 @@
 #import "ContentPageViewController.h"
 #import "PageViewController.h"
 
-@interface ContentViewController ()
+@interface ContentViewController () <UIPageViewControllerDelegate>
 
 @property (nonatomic, strong) ContentPageViewController *pageViewController;
 @property (nonatomic, strong) NSArray *pageTitles;
@@ -19,6 +19,12 @@
 @end
 
 @implementation ContentViewController
+
+- (void)setSelectedPageIndex:(NSUInteger)selectedPageIndex
+{
+    _selectedPageIndex = selectedPageIndex;
+    [self.delegate didSelectedPageAtIndex:selectedPageIndex];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,6 +36,7 @@
     
     self.pageViewController = [[ContentPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:nil];
     self.pageViewController.dataSource = self;
+    self.pageViewController.delegate = self;
     [self.view addSubview:self.pageViewController.view];
     
     PageViewController *startingViewController = [self viewControllerAtIndex:0];
@@ -63,7 +70,6 @@
     }
     
     index--;
-    self.selectedPageIndex = index;
     return [self viewControllerAtIndex:index];
 }
 
@@ -76,7 +82,6 @@
     }
     
     index++;
-    self.selectedPageIndex = index;
     if (index == [self.pageTitles count]) {
         return nil;
     }
@@ -90,6 +95,15 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
+}
+
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray *)pendingViewControllers
+{
+        if([pendingViewControllers count]>0)
+        {
+            PageViewController *nextPage = pendingViewControllers[0];
+            self.selectedPageIndex = nextPage.pageIndex;
+        }
 }
 
 - (PageViewController *)viewControllerAtIndex:(NSUInteger)index

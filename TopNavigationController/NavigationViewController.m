@@ -33,18 +33,25 @@
         
         navItem.delegate = self;
         navItem.button.tag = i;
-        navItem.view.frame = CGRectMake(i * [self itemsWidth] + 5, 30, [self itemsWidth] - 10, 60);
+        navItem.view.frame = CGRectMake(i * [self itemsWidth] + 5, 40, [self itemsWidth] - 10, 50);
         [self.navigationScrollView addSubview:navItem.view];
         self.navigationScrollView.contentSize = CGSizeMake(i * [self itemsWidth] + 5 + [self itemsWidth] - 10,  self.view.frame.size.height - 30);
     }
     
-    self.navigationScrollView.contentOffset = CGPointMake(-50, 0);
+    self.navigationScrollView.contentOffset = CGPointMake(-60, 0);
     
-    self.navigationScrollView.contentInset = UIEdgeInsetsMake(0, 50, 0, 50);
+    self.navigationScrollView.contentInset = UIEdgeInsetsMake(0, 60, 0, 60);
     
     ((NavigationItemViewController*)self.navigationItems[0]).isFocused = YES;
 
     // Do any additional setup after loading the view.
+}
+
+- (void)selectItemAtIndex:(NSUInteger)index
+{
+    NavigationItemViewController *navItem = self.navigationItems[index];
+    [self.navigationScrollView scrollRectToVisible:navItem.view.frame animated:YES];
+    self.view.backgroundColor = navItem.overlayColor;
 }
 
 - (void)didSelectedItemAtIndex:(NSUInteger)index

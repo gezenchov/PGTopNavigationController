@@ -20,4 +20,6 @@
 @property (nonatomic) id<NavigationViewController> delegate;
 @property (nonatomic, strong) NSArray *navigationItems;
 
+- (void)selectItemAtIndex:(NSUInteger)index;
+
 @end
